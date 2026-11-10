@@ -46,7 +46,7 @@ export async function POST(request: NextRequest) {
       .eq("project_id", projectId)
       .order("file_path");
 
-    const files = (projectFiles || []).map((f) => ({
+    const files = (projectFiles || []).map((f: any) => ({
       path: f.file_path,
       content: f.content || "",
       size: f.file_size || 0,

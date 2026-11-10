@@ -15,8 +15,8 @@ export default async function TaskHistoryPage() {
     .select("id, name")
     .eq("user_id", user?.id || "");
 
-  const projectIds = (projects || []).map((p) => p.id);
-  const projectMap = new Map((projects || []).map((p) => [p.id, p.name]));
+  const projectIds = (projects || []).map((p: any) => p.id);
+  const projectMap = new Map((projects || []).map((p: any) => [p.id, p.name]));
 
   const { data: tasks } = projectIds.length > 0
     ? await supabase
@@ -69,7 +69,7 @@ export default async function TaskHistoryPage() {
       ) : (
         <div className="space-y-3">
           {tasks.map((task: any) => {
-            const projectName = projectMap.get(task.project_id) || "Project";
+            const projectName = String(projectMap.get(task.project_id) || "Project");
             const durationSec = task.completed_at
               ? Math.max(1, Math.round((new Date(task.completed_at).getTime() - new Date(task.created_at).getTime()) / 1000))
               : null;
@@ -148,4 +148,3 @@ export default async function TaskHistoryPage() {
     </div>
   );
 }
-
