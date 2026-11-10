@@ -208,20 +208,20 @@ export default function SettingsPage() {
         <CardContent>
           <div className="flex items-center gap-3">
             <Button
-              variant={theme === "dark" ? "default" : "outline"}
-              size="sm"
-              onClick={() => setTheme("dark")}
-              className="gap-1.5"
-            >
-              <Moon className="w-4 h-4" /> Dark Mode (Default)
-            </Button>
-            <Button
               variant={theme === "light" ? "default" : "outline"}
               size="sm"
               onClick={() => setTheme("light")}
               className="gap-1.5"
             >
-              <Sun className="w-4 h-4" /> Light Mode
+              <Sun className="w-4 h-4 text-amber-500" /> Light Mode (Default)
+            </Button>
+            <Button
+              variant={theme === "dark" ? "default" : "outline"}
+              size="sm"
+              onClick={() => setTheme("dark")}
+              className="gap-1.5"
+            >
+              <Moon className="w-4 h-4" /> Dark Mode
             </Button>
           </div>
         </CardContent>
